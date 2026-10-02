@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emotion Reader</title>
+  <meta name="description" content="Type a sentence and see which emotion a BiGRU model hears in it.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="burst" id="burst" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="top">
+      <span class="status" id="status" role="status"><b></b><span>Checking model…</span></span>
+    </header>
+
+    <section class="intro">
+      <h1>What's the feeling behind the words?</h1>
+      <p>Type a sentence. A BiGRU model reads it and scores six emotions.</p>
+    </section>
+
+    <section class="composer" id="composer">
+      <label class="sr" for="text">Sentence to analyze</label>
+      <textarea id="text" maxlength="2000" rows="3" placeholder="I can't believe they remembered my birthday…" spellcheck="true"></textarea>
+      <div class="bar">
+        <span class="count"><span id="count">0</span> / 2000</span>
+        <button id="go" type="button" disabled>
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="label">Read emotion</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="chips" id="chips" aria-label="Try an example"></div>
+    <p class="hint">Tip: press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to analyze.</p>
+
+    <p class="error" id="error" role="alert" hidden></p>
+
+    <section class="result" id="result" aria-live="polite" hidden>
+      <div class="hero">
+        <div class="face" id="face">😄</div>
+        <div class="verdict">
+          <h2 id="name">joy</h2>
+          <p><span id="conf">0</span>% confident</p>
+        </div>
+      </div>
+      <ul class="rows" id="rows"></ul>
+    </section>
+
+    <section class="history" id="history" hidden>
+      <h3>Earlier in this session</h3>
+      <ul id="hist"></ul>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
