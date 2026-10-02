@@ -125,7 +125,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount('/Static', StaticFiles(directory="Static"), name="Static")
+app.mount('/s   tatic', StaticFiles(directory="Static"), name="static")
 
 
 
@@ -139,7 +139,7 @@ C. Predict Emotion Endpoint ('/predict')
 #A. Server UI at homepage ('/')
 @app.get('/', include_in_schema=False)
 def server_ui():
-    return FileResponse('static/index.html')
+    return FileResponse('Static/index.html')
 
 #B. Health Check Endpoint ('/health')
 @app.get('/health', response_model=HealthResponse)
