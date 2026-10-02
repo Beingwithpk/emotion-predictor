@@ -24,7 +24,7 @@ D. Emotion Labels
 E. Emotion emojis
 """
 #A. Model Path (BiGRU)
-model_path = "Artifacts/BiGRU_Model.keras"
+model_path = "Artifacts/BIGRU_Model.keras"
 
 #B. Tokenizer Path
 tokenizer_path = "Artifacts/tokenizer.pkl"
@@ -99,7 +99,7 @@ dl_model = {} #{1. BiGRU, 2. Tokenizer}-> True , {} -> False
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print('Loading the model and tokenizer...')
-    dl_model["BiGRU"] = load_model(model_path)                      #BiGRU Model
+    dl_model["BIGRU"] = load_model(model_path)                      #BiGRU Model
     with open(tokenizer_path, 'rb') as file:
         dl_model["Tokenizer"] = pickle.load(file)
     print('Model are loaded successfully...')   
