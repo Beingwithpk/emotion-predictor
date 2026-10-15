@@ -157,7 +157,7 @@ def predict_emotion(text_input: TextInput):
     5. Return the top emotion and full probability breakdown.
     """
 
-    BiGRU_model     = dl_model.get("BiGRU")
+    BiGRU_model     = dl_model.get("BIGRU")
     tokenizer_model = dl_model.get("Tokenizer")
 
     if BiGRU_model is None or tokenizer_model is None:
